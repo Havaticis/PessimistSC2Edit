@@ -1,4 +1,4 @@
-﻿#include lib/ToggleTimerAndShowTooltip.ahk
+#include lib/ToggleTimerAndShowTooltip.ahk
 #include lib/Tippy.ahk
 #include lib/ReloadScript.ahk
 
@@ -25,13 +25,13 @@
 
 ; CapsLock & Numpad0: toggle Templar
 
-; CapsLock & Numpad6: toggle Cyro
-
 ; CapsLock & Numpad9: toggle Marine
 
 ; CapsLock & Numpad8: toggle Dragoon
 
 ; CapsLock & Numpad7: toggle Medic
+
+; CapsLock & Numpad6: toggle Cyro
 
 ; CapsLock & Numpad4: toggle Centurion
 
@@ -124,7 +124,7 @@ class SC2
     static spectrePlayMillis := 1053
     static centurionPlayMillis := 219
     static autoupgradeMillis := 15003
-    static medicMillis := 2000
+    static medicMillis := 8000
     static marineMillis := 15000
     static templarMillis := 4000
     static cyroMillis := 5000
@@ -137,12 +137,15 @@ class SC2
         this.tankxPos := xPos
         this.tankyPos := yPos
         this.casterxPos := xPos + 188    ; compared to the center: a little bit to the right
-        this.casteryPos := yPos - 25    ; compared to the center: a little bit upper
+        this.casteryPos := yPos - 120    ; compared to the center: a little bit upper
+        this.cryoxPos := xPos - 20    ; compared to the center: a little bit to the right
+        this.cryoyPos := yPos - 35    ; compared to the center: a little bit upper
 
         msg :=
         (Join
             "Tank position is:  x: " . this.tankxPos . " y: " . this.tankyPos . "`n" .
             "Caster position is: x: " . this.casterxPos . " y: " . this.casteryPos
+            "Cyro cast is: x: " . this.cyroxPos . " y: " . this.cyroyPos
         )
 
         Tippy(msg, 9000, -1)
@@ -225,7 +228,7 @@ class SC2
     {
         Critical
 
-        SetKeyDelay, 20, 10
+        SetKeyDelay, 30, 10
         SetControlDelay 30
 
         if (WinActive(this.ahk_SC2)) {
@@ -236,17 +239,17 @@ class SC2
         }
 
         ; use the saved position
-        x := this.casterxPos
-        y := this.casteryPos
+        x := this.cryoxPos
+        y := this.cryoyPos
 
         ; ControlClick, must have the coordinates as "x100 y100", not just "100 100"
         x := "x" . x
         y := "y" . y
 
-        ControlSend,, {Blind}{Raw}6eh, % this.ahk_SC2
+        ControlSend,, {Blind}{Raw}6ehh, % this.ahk_SC2
         ControlSend,, {Blind}{Raw}6w, % this.ahk_SC2
         ControlClick,, % this.ahk_SC2,, LEFT, 1, %  "NA" x y
-        ControlSend,, {Blind}{Raw}6h, % this.ahk_SC2
+        ControlSend,, {Blind}{Raw}6hh, % this.ahk_SC2
     }
 
     Medic()
