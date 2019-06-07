@@ -124,7 +124,7 @@ class SC2
     static spectrePlayMillis := 1053
     static centurionPlayMillis := 219
     static autoupgradeMillis := 15003
-    static medicMillis := 8000
+    static medicMillis := 2000
     static marineMillis := 15000
     static templarMillis := 4000
     static cyroMillis := 5000
