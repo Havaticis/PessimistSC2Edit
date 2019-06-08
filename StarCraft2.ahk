@@ -138,8 +138,8 @@ class SC2
         this.tankyPos := yPos
         this.casterxPos := xPos + 188    ; compared to the center: a little bit to the right
         this.casteryPos := yPos - 120    ; compared to the center: a little bit upper
-        this.cryoxPos := xPos - 20    ; compared to the center: a little bit to the left
-        this.cryoyPos := yPos - 35    ; compared to the center: a little bit upper
+        this.cryoxPos := xPos - 55    ; compared to the center: a little bit to the left
+        this.cryoyPos := yPos - 5    ; compared to the center: a little bit upper
 
         msg :=
         (Join
@@ -161,7 +161,7 @@ class SC2
     {
         ToggleTimerAndShowTooltip("SC2.DragoonQ", this.dragoonQMillis, SC2.DragoonQ.Bind(SC2))
     }
-
+    
     ToggleMedic()
     {
         ToggleTimerAndShowTooltip("SC2.Medic", this.medicMillis, SC2.Medic.Bind(SC2))
@@ -317,7 +317,8 @@ class SC2
             Tippy("CenturionPlay",, 4)
         }
 
-        ControlSend,, {Blind}{Raw}4wh, % this.ahk_SC2
+        ControlSend,, {Blind}{Raw}4w, % this.ahk_SC2
+        ControlSend,, {Blind}{Raw}4e, % this.ahk_SC2
     }
 
     Autoupgrade()
