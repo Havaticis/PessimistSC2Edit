@@ -318,7 +318,6 @@ class SC2
         }
 
         ControlSend,, {Blind}{Raw}4whh, % this.ahk_SC2
-        ControlSend,, {Blind}{Raw}4h, % this.ahk_SC2
     }
 
     Autoupgrade()
