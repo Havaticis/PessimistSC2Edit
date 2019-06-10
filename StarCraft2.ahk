@@ -317,8 +317,8 @@ class SC2
             Tippy("CenturionPlay",, 4)
         }
 
-        ControlSend,, {Blind}{Raw}4w, % this.ahk_SC2
-        ControlSend,, {Blind}{Raw}4e, % this.ahk_SC2
+        ControlSend,, {Blind}{Raw}4whh, % this.ahk_SC2
+        ControlSend,, {Blind}{Raw}4h, % this.ahk_SC2
     }
 
     Autoupgrade()
